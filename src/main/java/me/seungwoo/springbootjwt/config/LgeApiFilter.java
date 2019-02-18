@@ -19,15 +19,18 @@ import java.io.IOException;
  */
 public class LgeApiFilter extends GenericFilterBean {
 
-    @Value("${api.obt.apiKey}")
-    private String apiKey;
+    @Value("${obt.applicationId}")
+    private String applicationId;
+
+    @Value("${obt.restApiToken}")
+    private String restApiToken;
 
     public void doFilter(final ServletRequest req, final ServletResponse res, final FilterChain chain)
             throws IOException, ServletException {
 
         final HttpServletRequest request = (HttpServletRequest) req;
         final HttpServletResponse response = (HttpServletResponse) res;
-        final String authHeader = request.getHeader("apiKey");
+        final String authHeader = request.getHeader("X-Obt-Rest-Api-Token");
 
         if ("OPTIONS".equals(request.getMethod())) {
             response.setStatus(HttpServletResponse.SC_OK);
@@ -39,8 +42,8 @@ public class LgeApiFilter extends GenericFilterBean {
             }
             final String token = authHeader;
 
-            if(token.equals(token)){
-                request.setAttribute("apiKey", token);
+            if(restApiToken.equals(token)){
+                request.setAttribute("X-Obt-Rest-Api-Token", token);
             } else {
                 throw new ServletException("Invalid apiKey");
             }
