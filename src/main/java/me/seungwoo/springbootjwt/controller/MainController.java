@@ -51,4 +51,9 @@ public class MainController {
     public String hello(HttpServletRequest request) {
         return "hello";
     }
+
+    @GetMapping("/obt")
+    public String obt(HttpServletRequest request) {
+        return "obt";
+    }
 }
