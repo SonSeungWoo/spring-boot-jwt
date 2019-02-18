@@ -19,11 +19,9 @@ import java.io.IOException;
  */
 public class LgeApiFilter extends GenericFilterBean {
 
-    @Value("${obt.applicationId}")
-    private String applicationId;
+    private static final String applicationId = "applicationId";
 
-    @Value("${obt.restApiToken}")
-    private String restApiToken;
+    private static final String restApiToken = "apiKey";
 
     public void doFilter(final ServletRequest req, final ServletResponse res, final FilterChain chain)
             throws IOException, ServletException {

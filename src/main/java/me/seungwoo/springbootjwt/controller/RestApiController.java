@@ -29,7 +29,7 @@ public class RestApiController {
 
     @GetMapping("/obt/api")
     public JSONObject test() {
-        URI uri = URI.create("localhost:8080/obt");
+        URI uri = URI.create("http://localhost:8080/obt");
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         headers.set("X-Obt-Application-Id", applicationId);
